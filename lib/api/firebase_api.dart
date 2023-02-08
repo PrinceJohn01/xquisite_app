@@ -24,7 +24,6 @@ class FirebaseApi {
       createdAt: DateTime.now(),
     );
     await refMessages.add(newMessage.toJson());
-
     final refUsers = FirebaseFirestore.instance.collection('users');
     await refUsers
         .doc(idUser)

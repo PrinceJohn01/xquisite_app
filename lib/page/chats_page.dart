@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:xquisite_app/api/firebase_api.dart';
 import 'package:xquisite_app/model/user.dart';
 import 'package:xquisite_app/widget/chat_body_widget.dart';
@@ -19,7 +20,9 @@ class ChatsPage extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator());
                 default:
                   if (snapshot.hasError) {
-                    print(snapshot.error);
+                    if (kDebugMode) {
+                      print(snapshot.error);
+                    }
                     return buildText('Something Went Wrong Try later');
                   } else {
                     final users = snapshot.data;
@@ -44,7 +47,7 @@ class ChatsPage extends StatelessWidget {
   Widget buildText(String text) => Center(
         child: Text(
           text,
-          style: TextStyle(fontSize: 24, color: Colors.white),
+          style: const TextStyle(fontSize: 24, color: Colors.white),
         ),
       );
 }
